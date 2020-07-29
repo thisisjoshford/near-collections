@@ -70,7 +70,7 @@ export default function App() {
           await onSubmit(event)
 
           // update local `greeting` variable to match persisted value
-          setGreeting(newKey, newValue)
+          setData(newKey, newValue)
 
           // show Notification
           setShowNotification(true)

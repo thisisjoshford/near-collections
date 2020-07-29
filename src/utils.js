@@ -29,8 +29,8 @@ export async function onSubmit(event) {
 
   try {
     await contract.setData({
-      key: 'key1',
-      value: 'value1'
+      key: key.value,
+      value: value.value
     })
   } catch (e) {
     alert(
