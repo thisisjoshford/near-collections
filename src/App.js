@@ -1,5 +1,5 @@
 import 'regenerator-runtime/runtime'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { login, logout, onSubmit } from './utils'
 import './global.css'
 
@@ -8,17 +8,17 @@ const { networkId } = getConfig(process.env.NODE_ENV || 'development')
 
 export default function App() {
   // use React Hooks to store greeting in component state
-  const [greeting, setGreeting] = React.useState()
+  const [greeting, setGreeting] = useState()
 
   // when the user has not yet interacted with the form, disable the button
-  const [buttonDisabled, setButtonDisabled] = React.useState(true)
+  const [buttonDisabled, setButtonDisabled] = useState(true)
 
   // after submitting the form, we want to show Notification
-  const [showNotification, setShowNotification] = React.useState(false)
+  const [showNotification, setShowNotification] = useState(false)
 
   // The useEffect hook can be used to fire side-effects during render
   // Learn more: https://reactjs.org/docs/hooks-intro.html
-  React.useEffect(
+  useEffect(
     () => {
       // in this case, we only care to query the contract swhen signed in
       if (window.walletConnection.isSignedIn()) {
