@@ -1,11 +1,12 @@
 import 'regenerator-runtime/runtime'
 import React, { useState, useEffect } from 'react'
+import WelcomeScreen from './components/WelcomeScreen'
 import { logout, onSubmit } from './utils'
 import './global.css'
 
 import getConfig from './config'
 import { fetchStorage } from './api'
-import WelcomeScreen from './components/WelcomeScreen'
+
 const { networkId } = getConfig(process.env.NODE_ENV || 'development')
 
 export default function App() {
@@ -21,9 +22,7 @@ export default function App() {
           setStorage(res)
           console.log(res)
         })
-    },
-    []
-  )
+    },[])
 
   if (!window.walletConnection.isSignedIn()) return <WelcomeScreen/>
 

@@ -1,8 +1,8 @@
 export const fetchStorage = (account, network = "testnet") => {
 
-  const url = `https://rpc.${network}.near.org`
+  const URL = `https://rpc.${network}.near.org`
 
-  return fetch(`${url}`, {
+  return fetch(`${URL}`, {
     method: 'POST',
     mode: 'cors',
     cache: 'no-cache',

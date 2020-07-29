@@ -3,7 +3,7 @@ import { login } from '../utils';
 
 export default function WelcomeScreen() {
   return (
-         <main>
+      <main>
         <h1>Welcome to NEAR!</h1>
         <p>
           To make use of the NEAR blockchain, you need to sign in. The button
