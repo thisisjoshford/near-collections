@@ -15,12 +15,15 @@ export default function App() {
 
   useEffect(
     () => {
-      setStorage(fetchStorage('dev-1595921278956-5615156', 'testnet'))
+      fetchStorage('dev-1595921278956-5615156', 'testnet')
+        .then(res => {
+          setStorage(res)
+          console.log(res)
+        })
     },
     []
   )
 
-  console.log(storage);
   if (!window.walletConnection.isSignedIn()) {
     return (
       <main>

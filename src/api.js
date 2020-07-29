@@ -23,5 +23,8 @@ export const fetchStorage = (account, network = "testnet") => {
     })
   })
   .then(res => res.json())
-  .then(body => console.log(body))
+  .then(body => body.result.values.map(value => ({
+    key: atob(value.key),
+    value: atob(value.value)
+  })))
 }
