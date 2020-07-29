@@ -14,23 +14,23 @@ export async function initContract() {
   window.accountId = window.walletConnection.getAccountId()
   // Initializing our contract APIs by contract name and configuration
   window.contract = await new Contract(window.walletConnection.account(), nearConfig.contractName, {
-    // View methods are read only. They don't modify the state, but usually return some value.
     viewMethods: ['getData'],
-    // Change methods can modify the state. But you don't receive the returned value when called.
     changeMethods: ['setData'],
   })
 }
 
 export async function onSubmit(event) {
   event.preventDefault()
-  const { fieldset, greeting } = event.target.elements
+  const { fieldset, key, value } = event.target.elements
+  console.log(key.value, value.value)
 
   // disable the form while the value gets updated on-chain
   fieldset.disabled = true
 
   try {
     await contract.setData({
-      message: greeting.value
+      key: 'key1',
+      value: 'value1'
     })
   } catch (e) {
     alert(

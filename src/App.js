@@ -7,21 +7,21 @@ import getConfig from './config'
 const { networkId } = getConfig(process.env.NODE_ENV || 'development')
 
 export default function App() {
-  const [greeting, setGreeting] = useState()
+  const [data, setData] = useState()
   const [buttonDisabled, setButtonDisabled] = useState(true)
   const [showNotification, setShowNotification] = useState(false)
 
-  useEffect(
-    () => {
-      if (window.walletConnection.isSignedIn()) {
-        window.contract.getData({ accountId: window.accountId })
-          .then(dataFromContract => {
-            setGreeting(dataFromContract)
-          })
-      }
-    },
-    []
-  )
+  // useEffect(
+  //   () => {
+  //     if (window.walletConnection.isSignedIn()) {
+  //       window.contract.getData('key')
+  //         .then(dataFromContract => {
+  //           setGreeting(dataFromContract)
+  //         })
+  //     }
+  //   },
+  //   []
+  // )
   if (!window.walletConnection.isSignedIn()) {
     return (
       <main>
@@ -60,17 +60,17 @@ export default function App() {
               borderBottom: '2px solid var(--secondary)'
             }}
           >
-            {greeting}
           </label>
           {' '}
           {window.accountId}!
         </h1>
         <form onSubmit={async event => {
-          const newGreeting = event.target.elements.greeting.value
+          const newKey = event.target.elements.key.value
+          const newValue = event.target.elements.value.value
           await onSubmit(event)
 
           // update local `greeting` variable to match persisted value
-          setGreeting(newGreeting)
+          setGreeting(newKey, newValue)
 
           // show Notification
           setShowNotification(true)
@@ -95,9 +95,16 @@ export default function App() {
             <div style={{ display: 'flex' }}>
               <input
                 autoComplete="off"
-                defaultValue={greeting}
-                id="greeting"
-                onChange={e => setButtonDisabled(e.target.value === greeting)}
+                defaultValue="key"
+                id="key"
+                onChange={e => setButtonDisabled(e.target.value === key)}
+                style={{ flex: 1 }}
+              />
+              <input
+                autoComplete="off"
+                defaultValue="value"
+                id="value"
+                onChange={e => setButtonDisabled(e.target.value === value)}
                 style={{ flex: 1 }}
               />
               <button
