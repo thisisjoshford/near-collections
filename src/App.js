@@ -14,9 +14,9 @@ export default function App() {
   useEffect(
     () => {
       if (window.walletConnection.isSignedIn()) {
-        window.contract.getGreeting({ accountId: window.accountId })
-          .then(greetingFromContract => {
-            setGreeting(greetingFromContract)
+        window.contract.getData({ accountId: window.accountId })
+          .then(dataFromContract => {
+            setGreeting(dataFromContract)
           })
       }
     },
