@@ -4,24 +4,23 @@ import { login, logout, onSubmit } from './utils'
 import './global.css'
 
 import getConfig from './config'
+import { fetchStorage } from './api'
 const { networkId } = getConfig(process.env.NODE_ENV || 'development')
 
 export default function App() {
   const [data, setData] = useState()
+  const [storage, setStorage] = useState()
   const [buttonDisabled, setButtonDisabled] = useState(true)
   const [showNotification, setShowNotification] = useState(false)
 
-  // useEffect(
-  //   () => {
-  //     if (window.walletConnection.isSignedIn()) {
-  //       window.contract.getData('key')
-  //         .then(dataFromContract => {
-  //           setGreeting(dataFromContract)
-  //         })
-  //     }
-  //   },
-  //   []
-  // )
+  useEffect(
+    () => {
+      setStorage(fetchStorage('dev-1595921278956-5615156', 'testnet'))
+    },
+    []
+  )
+
+  console.log(storage);
   if (!window.walletConnection.isSignedIn()) {
     return (
       <main>
@@ -90,7 +89,7 @@ export default function App() {
                 marginBottom: '0.5em'
               }}
             >
-              Change greeting
+              Contract Data Entry:
             </label>
             <div style={{ display: 'flex' }}>
               <input
@@ -99,7 +98,7 @@ export default function App() {
                 id="key"
                 onChange={e => setButtonDisabled(e.target.value === key)}
                 style={{ flex: 1 }}
-              />
+              />             
               <input
                 autoComplete="off"
                 defaultValue="value"
