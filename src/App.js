@@ -15,7 +15,7 @@ export default function App() {
 
   useEffect(
     () => {
-      fetchStorage('dev-1595921278956-5615156', 'testnet')
+      fetchStorage(process.env.CONTRACT_NAME, 'testnet')
         .then(res => {
           setStorage(res)
           console.log(res)
