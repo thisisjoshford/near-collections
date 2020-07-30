@@ -1,11 +1,11 @@
 import 'regenerator-runtime/runtime'
 import React, { useState, useEffect } from 'react'
 import WelcomeScreen from './components/WelcomeScreen'
-import { logout, onSubmit } from './utils'
+import { logout, onSubmit } from './services/utils'
 import './global.css'
 
 import getConfig from './config'
-import { fetchStorage } from './api'
+import { fetchStorage } from './services/api'
 
 const { networkId } = getConfig(process.env.NODE_ENV || 'development')
 
