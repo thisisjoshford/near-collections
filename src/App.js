@@ -26,8 +26,8 @@ export default function App() {
 
   if (!window.walletConnection.isSignedIn()) return <WelcomeScreen/>
 
-  const storageData = storage?.map(value => (
-    <tr>
+  const storageElements = storage?.map((value, i) => (
+    <tr key={i}>
       <td>{value.key}</td>
       <td>{value.value}</td>
     </tr>
@@ -39,46 +39,27 @@ export default function App() {
         Sign out
       </button>
       <main>
-        <h1>
-          <label
-            htmlFor="greeting"
-            style={{
-              color: 'var(--secondary)',
-              borderBottom: '2px solid var(--secondary)'
-            }}
-          >
-          </label>
-          {' '}
-          {window.accountId}!
-        </h1>
+        <h1>{window.accountId}</h1>
         <form onSubmit={async event => {
           const newKey = event.target.elements.key.value
           const newValue = event.target.elements.value.value
           await onSubmit(event)
-
-          // update local `greeting` variable to match persisted value
           setData(newKey, newValue)
-
-          // show Notification
           setShowNotification(true)
-
-          // remove Notification again after css animation completes
-          // this allows it to be shown again next time the form is submitted
           setTimeout(() => {
             setShowNotification(false)
           }, 11000)
         }}>
           <fieldset id="fieldset">
-            <label
-              htmlFor="greeting"
-              style={{
-                display: 'block',
-                color: 'var(--gray)',
-                marginBottom: '0.5em'
-              }}
-            >
-              Enter new data: {process.env.CONTRACT_NAME}
-            </label>
+            <p> Storing data to account:&nbsp; 
+              <a 
+                href={`https://explorer.testnet.near.org/accounts/${process.env.CONTRACT_NAME}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {process.env.CONTRACT_NAME}
+              </a>
+            </p>
             <div style={{ display: 'flex' }}>
               <input
                 autoComplete="off"
@@ -98,17 +79,21 @@ export default function App() {
                 disabled={buttonDisabled}
                 style={{ borderRadius: '0 5px 5px 0' }}
               >
-                Save
+                Send
               </button>
             </div>
           </fieldset>
         </form>
         <table>
-          <tr>
-            <th>KEY</th>
-            <th>VALUE</th>
-          </tr>
-          {storageData}
+          <thead>
+            <tr>
+              <th>KEY</th>
+              <th>VALUE</th>
+            </tr>
+          </thead>
+          <tbody>
+            {storageElements}
+          </tbody>
         </table>
       </main>
       {showNotification && <Notification />}

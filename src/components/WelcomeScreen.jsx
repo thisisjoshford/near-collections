@@ -1,5 +1,5 @@
 import React from 'react'
-import { login } from '../services/utils';
+import { login } from '../utils';
 
 export default function WelcomeScreen() {
   return (
