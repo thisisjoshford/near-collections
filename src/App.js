@@ -1,11 +1,11 @@
 import 'regenerator-runtime/runtime'
 import React, { useState, useEffect } from 'react'
-import WelcomeScreen from './components/WelcomeScreen'
 import { logout, onSubmit } from './services/utils'
-import './global.css'
-
 import getConfig from './config'
 import { fetchStorage } from './services/api'
+import WelcomeScreen from './components/WelcomeScreen'
+import AccountData from './components/AccountData'
+import './global.css'
 
 const { networkId } = getConfig(process.env.NODE_ENV || 'development')
 
@@ -25,13 +25,6 @@ export default function App() {
     },[showNotification])
 
   if (!window.walletConnection.isSignedIn()) return <WelcomeScreen/>
-
-  const storageElements = storage?.map((value, i) => (
-    <tr key={i}>
-      <td>{value.key}</td>
-      <td>{value.value}</td>
-    </tr>
-  ))
 
   return (
     <>
@@ -84,17 +77,7 @@ export default function App() {
             </div>
           </fieldset>
         </form>
-        <table>
-          <thead>
-            <tr>
-              <th>KEY</th>
-              <th>VALUE</th>
-            </tr>
-          </thead>
-          <tbody>
-            {storageElements}
-          </tbody>
-        </table>
+        {storage? <AccountData storage={storage}/> : null}
       </main>
       {showNotification && <Notification />}
     </>
