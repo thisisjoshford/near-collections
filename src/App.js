@@ -22,9 +22,16 @@ export default function App() {
           setStorage(res)
           console.log(res)
         })
-    },[])
+    },[showNotification])
 
   if (!window.walletConnection.isSignedIn()) return <WelcomeScreen/>
+
+  const storageData = storage?.map(value => (
+    <tr>
+      <td>{value.key}</td>
+      <td>{value.value}</td>
+    </tr>
+  ))
 
   return (
     <>
@@ -70,19 +77,19 @@ export default function App() {
                 marginBottom: '0.5em'
               }}
             >
-              Contract Data Entry:
+              Enter new data: {process.env.CONTRACT_NAME}
             </label>
             <div style={{ display: 'flex' }}>
               <input
                 autoComplete="off"
-                defaultValue="key"
+                placeholder="key"
                 id="key"
                 onChange={e => setButtonDisabled(e.target.value === key)}
                 style={{ flex: 1 }}
               />             
               <input
                 autoComplete="off"
-                defaultValue="value"
+                placeholder="value"
                 id="value"
                 onChange={e => setButtonDisabled(e.target.value === value)}
                 style={{ flex: 1 }}
@@ -96,6 +103,13 @@ export default function App() {
             </div>
           </fieldset>
         </form>
+        <table>
+          <tr>
+            <th>KEY</th>
+            <th>VALUE</th>
+          </tr>
+          {storageData}
+        </table>
       </main>
       {showNotification && <Notification />}
     </>
