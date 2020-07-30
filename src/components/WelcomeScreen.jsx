@@ -1,4 +1,5 @@
 import React from 'react'
+import infoIcon from '../assets/info.png'
 import { login } from '../services/utils';
 
 export default function WelcomeScreen() {
@@ -9,9 +10,10 @@ export default function WelcomeScreen() {
           Lets store some data on the blockchain! 
         </h3>
         <p id="signInButton">
-          <button onClick={login}>Sign In / Sign Up</button>
+          <button onClick={login}>Sign in</button>
         </p>
-        <div class="tooltip">?
+        <div class="tooltip">
+          <img id="infoIcon" src={infoIcon}></img>
           <span class="tooltiptext">
           To get started you will need to sign in using NEAR Wallet with an existing account or create a new one using the button above.
           </span>

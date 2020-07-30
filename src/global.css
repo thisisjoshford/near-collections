@@ -116,7 +116,7 @@ button.link {
 
 fieldset {
   border: none;
-  padding: 2em 0;
+  margin-bottom: 1rem;
 }
 
 input {
@@ -229,6 +229,7 @@ th {
 
 #signInButton {
   text-align: center;
+  margin-bottom: .5rem;
 }
 
 #welcomeIntro {
@@ -237,6 +238,11 @@ th {
   color: grey;
 }
 
+#infoIcon {
+  margin-top: 0;
+  opacity: 70%;
+  width: 4vh;
+}
 .tooltip {
   cursor: pointer;
   width: 1rem;
@@ -246,16 +252,15 @@ th {
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 120px;
+  width: 80vh;
   background-color: #555;
   color: #fff;
   text-align: center;
   padding: 5px 5px;
   border-radius: 6px;
-  width: 80vh;
   position: absolute;
-  top: 55vh;
-  left: 55vh;
+  top: 60%;
+  left: 30%;
   font-size: .75rem;
   text-align: left;
   z-index: 1;
@@ -269,3 +274,14 @@ th {
   visibility: visible;
 }
 
+#nearLogo {
+  width: 30%;
+  opacity: 70%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#accountInfo{
+  text-align: center;
+}

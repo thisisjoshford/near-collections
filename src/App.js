@@ -5,6 +5,7 @@ import getConfig from './config'
 import { fetchStorage } from './services/api'
 import WelcomeScreen from './components/WelcomeScreen'
 import AccountData from './components/AccountData'
+import nearLogo from './assets/logo-white.svg'
 import './global.css'
 
 const { networkId } = getConfig(process.env.NODE_ENV || 'development')
@@ -29,11 +30,24 @@ export default function App() {
   return (
     <>
       <span style={{ float: 'right' }}>{window.accountId}</span><br/>
-      <button className="link" style={{ float: 'right' }} onClick={logout}>
+      <button 
+        className="link" 
+        style={{ float: 'right' }} 
+        onClick={logout}
+      >
         Sign out
       </button>
       <main>
-        <h1></h1>
+       <img id="nearLogo" src={nearLogo}/>
+       <p id ="accountInfo"> Enter data to be stored in account:{' '}<br/>
+          <a 
+            href={`https://explorer.testnet.near.org/accounts/${process.env.CONTRACT_NAME}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {process.env.CONTRACT_NAME}
+          </a>
+        </p>
         <form onSubmit={async event => {
           const newKey = event.target.elements.key.value
           const newValue = event.target.elements.value.value
@@ -68,15 +82,6 @@ export default function App() {
                 Send
               </button>
             </div>
-            <p> Storing data to account:{' '}
-              <a 
-                href={`https://explorer.testnet.near.org/accounts/${process.env.CONTRACT_NAME}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {process.env.CONTRACT_NAME}
-              </a>
-            </p>
           </fieldset>
         </form>
         {storage?.length > 0 ? <AccountData storage={storage}/> : null}
