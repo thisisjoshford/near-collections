@@ -77,7 +77,7 @@ export default function App() {
             </div>
           </fieldset>
         </form>
-        {storage? <AccountData storage={storage}/> : null}
+        {storage?.length > 0 ? <AccountData storage={storage}/> : null}
       </main>
       {showNotification && <Notification />}
     </>
