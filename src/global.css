@@ -183,10 +183,24 @@ aside footer *:last-child {
   }
   h1 {
     background-image: url(assets/logo-white.svg);
+    margin-bottom: 0;
   }
   input:focus {
     box-shadow: 0 0 10em rgba(255, 255, 255, 0.02) inset;
   }
+}
+
+h3 {
+  text-align: center;
+  margin-top: 0;
+  color: grey;
+}
+
+h4 {
+  text-align: center;
+  color:grey;
+  margin-top: 0;
+  margin-bottom: .5rem;
 }
 
 table, th, td {
@@ -200,14 +214,49 @@ table, th, td {
 
 table {
   border: 1px solid grey;
+  width: 70vh;
   box-shadow: 0px 0px 36px 15px rgba(0, 0, 0, 0.28);
 }
 
 th {
   color: #04A7FA;
+  font-size: .75rem;
   border-bottom: 4px double grey;
 }
 
-span {
-  color: #04A7FA;
+#signInButton {
+  text-align: center;
 }
+
+#welcomeIntro {
+  font-size: .75rem;
+  text-align: left;
+  color: grey;
+}
+
+.tooltip {
+  cursor: pointer;
+  text-align: center;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 5px;
+  border-radius: 6px;
+  width: 80vh;
+  position: absolute;
+  top: 60vh;
+  left: 62vh;
+  font-size: .75rem;
+  text-align: left;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+

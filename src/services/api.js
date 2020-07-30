@@ -1,5 +1,4 @@
 export const fetchStorage = (account, network = "testnet") => {
-
   const URL = `https://rpc.${network}.near.org`
 
   return fetch(`${URL}`, {

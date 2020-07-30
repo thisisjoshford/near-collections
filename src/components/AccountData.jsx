@@ -9,6 +9,10 @@ export default function AccountData({ storage }) {
   ))
 
   return (
+    <>
+        <h4>
+          [ current values stored ]
+        </h4>
         <table>
         <thead>
           <tr>
@@ -20,5 +24,6 @@ export default function AccountData({ storage }) {
           {storageElements}
         </tbody>
       </table>
+    </>
   )
 }
