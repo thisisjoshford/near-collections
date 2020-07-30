@@ -241,7 +241,7 @@ th {
 #infoIcon {
   margin-top: 0;
   opacity: 70%;
-  width: 4vh;
+  width: 3.5vh;
 }
 .tooltip {
   cursor: pointer;
@@ -252,15 +252,15 @@ th {
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 80vh;
+  width: 33%;
   background-color: #555;
   color: #fff;
   text-align: center;
   padding: 5px 5px;
   border-radius: 6px;
   position: absolute;
-  top: 55%;
-  left: 30%;
+  top: 53%;
+  left: 34%;
   font-size: .75rem;
   text-align: left;
   z-index: 1;

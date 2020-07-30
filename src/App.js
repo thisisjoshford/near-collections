@@ -11,7 +11,6 @@ import './global.css'
 const { networkId } = getConfig(process.env.NODE_ENV || 'development')
 
 export default function App() {
-  const [data, setData] = useState()
   const [storage, setStorage] = useState()
   const [buttonDisabled, setButtonDisabled] = useState(true)
   const [showNotification, setShowNotification] = useState(false)
@@ -49,10 +48,7 @@ export default function App() {
           </a>
         </p>
         <form onSubmit={async event => {
-          const newKey = event.target.elements.key.value
-          const newValue = event.target.elements.value.value
           await onSubmit(event)
-          setData(newKey, newValue)
           setShowNotification(true)
           setTimeout(() => {
             setShowNotification(false)
