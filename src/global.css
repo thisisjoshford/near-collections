@@ -43,12 +43,14 @@ a,
 .link {
   color: var(--primary);
   text-decoration: none;
+  transition: all 0.4s ease 0s;
 }
 a:hover,
 a:focus,
 .link:hover,
 .link:focus {
-  text-decoration: underline;
+  color:#04A7FA;
+  transition: all 0.4s ease 0s;
 }
 a:active,
 .link:active {
@@ -68,6 +70,7 @@ button {
   cursor: pointer;
   padding: 0.3em 0.75em;
   transition: transform 30ms;
+  transition: all 0.4s ease 0s;
 }
 button:hover, button:focus {
   box-shadow: 0 0 10em rgba(255, 255, 255, 0.2) inset;
@@ -113,7 +116,7 @@ button.link {
 
 fieldset {
   border: none;
-  padding: 2em 0;
+  margin-bottom: 1rem;
 }
 
 input {
@@ -123,6 +126,8 @@ input {
   caret-color: var(--primary);
   color: inherit;
   padding: 0.25em 1em;
+  margin-left: 1rem;
+  width: 4rem;
 }
 input::selection {
   background-color: var(--secondary);
@@ -181,8 +186,102 @@ aside footer *:last-child {
   }
   h1 {
     background-image: url(assets/logo-white.svg);
+    margin-bottom: 0;
   }
   input:focus {
     box-shadow: 0 0 10em rgba(255, 255, 255, 0.02) inset;
   }
+}
+
+h3 {
+  text-align: center;
+  margin-top: 0;
+  color: grey;
+}
+
+h4 {
+  text-align: center;
+  color:grey;
+  margin-top: 0;
+  margin-bottom: .5rem;
+}
+
+table, th, td {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  padding: .5rem;
+  text-align: center;
+}
+
+table {
+  border: 1px solid grey;
+  width: 70vh;
+  box-shadow: 0px 0px 36px 15px rgba(0, 0, 0, 0.28);
+}
+
+th {
+  color: #04A7FA;
+  font-size: .75rem;
+  border-bottom: 4px double grey;
+}
+
+#signInButton {
+  text-align: center;
+  margin-bottom: .5rem;
+}
+
+#welcomeIntro {
+  font-size: .75rem;
+  text-align: left;
+  color: grey;
+}
+
+#infoIcon {
+  margin-top: 0;
+  opacity: 70%;
+  width: 4vh;
+}
+.tooltip {
+  cursor: pointer;
+  width: 1rem;
+  text-align: center;
+  margin: auto;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 80vh;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 5px;
+  border-radius: 6px;
+  position: absolute;
+  top: 60%;
+  left: 30%;
+  font-size: .75rem;
+  text-align: left;
+  z-index: 1;
+  opacity: 0;
+  -webkit-transition: opacity 1s ease-in-out;
+  transition: opacity .5s ease-in-out;
+}
+
+.tooltip:hover .tooltiptext {
+  opacity: 1;
+  visibility: visible;
+}
+
+#nearLogo {
+  width: 30%;
+  opacity: 70%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#accountInfo{
+  text-align: center;
 }

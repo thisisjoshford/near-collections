@@ -2,6 +2,8 @@
 # Developer note: near.gitignore will be renamed to .gitignore upon project creation
 # dependencies
 package-lock.json
+.cache/
+dist/
 /node_modules
 /.pnp
 .pnp.js
