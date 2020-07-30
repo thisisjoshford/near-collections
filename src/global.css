@@ -43,12 +43,14 @@ a,
 .link {
   color: var(--primary);
   text-decoration: none;
+  transition: all 0.4s ease 0s;
 }
 a:hover,
 a:focus,
 .link:hover,
 .link:focus {
-  text-decoration: underline;
+  color:#04A7FA;
+  transition: all 0.4s ease 0s;
 }
 a:active,
 .link:active {
@@ -68,6 +70,7 @@ button {
   cursor: pointer;
   padding: 0.3em 0.75em;
   transition: transform 30ms;
+  transition: all 0.4s ease 0s;
 }
 button:hover, button:focus {
   box-shadow: 0 0 10em rgba(255, 255, 255, 0.2) inset;
@@ -236,7 +239,9 @@ th {
 
 .tooltip {
   cursor: pointer;
+  width: 1rem;
   text-align: center;
+  margin: auto;
 }
 
 .tooltip .tooltiptext {
@@ -249,14 +254,18 @@ th {
   border-radius: 6px;
   width: 80vh;
   position: absolute;
-  top: 60vh;
-  left: 62vh;
+  top: 55vh;
+  left: 55vh;
   font-size: .75rem;
   text-align: left;
   z-index: 1;
+  opacity: 0;
+  -webkit-transition: opacity 1s ease-in-out;
+  transition: opacity .5s ease-in-out;
 }
 
 .tooltip:hover .tooltiptext {
+  opacity: 1;
   visibility: visible;
 }
 
