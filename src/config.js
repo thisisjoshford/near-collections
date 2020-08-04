@@ -2,7 +2,6 @@ const CONTRACT_NAME = process.env.CONTRACT_NAME ||'collections'
 
 function getConfig(env) {
   switch (env) {
-
   case 'production':
   case 'mainnet':
     return {

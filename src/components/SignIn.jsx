@@ -2,7 +2,7 @@ import React from 'react'
 import infoIcon from '../assets/info.png'
 import { login } from '../services/utils';
 
-export default function WelcomeScreen() {
+export default function SignIn() {
   return (
       <main>
         <h1>Key-Value Store</h1>

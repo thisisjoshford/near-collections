@@ -11,7 +11,7 @@ export default function AccountData({ storage }) {
   return (
     <>
         <h4>
-          [ current values stored ]
+          [ current state ]
         </h4>
         <table>
         <thead>
