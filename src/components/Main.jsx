@@ -1,7 +1,7 @@
 import React,  { useEffect, useState } from 'react'
 import { fetchStorage } from '../services/api'
 import { logout, onSubmit } from '../services/utils'
-import AccountData from '../components/AccountData'
+import AccountState from './AccountState'
 import nearLogo from '../assets/logo-white.svg'
 
 export default function Main() {
@@ -67,7 +67,7 @@ export default function Main() {
             </div>
           </fieldset>
         </form>
-        {storage?.length > 0 ? <AccountData storage={storage}/> : null}
+        {storage?.length > 0 ? <AccountState storage={storage}/> : null}
       </main>
       {showNotification && <Notification />}
     </div>

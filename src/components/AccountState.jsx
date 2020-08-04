@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function AccountData({ storage }) {
+export default function AccountState({ storage }) {
   const storageElements = storage?.map((value, i) => (
     <tr key={i}>
       <td>{value.key}</td>
