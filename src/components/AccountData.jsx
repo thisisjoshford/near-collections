@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function AccountData({ storage }) {
   const storageElements = storage?.map((value, i) => (
@@ -6,14 +6,14 @@ export default function AccountData({ storage }) {
       <td>{value.key}</td>
       <td>{value.value}</td>
     </tr>
-  ))
+  ));
 
   return (
     <>
-        <h4>
+      <h4>
           [ current values stored ]
-        </h4>
-        <table>
+      </h4>
+      <table>
         <thead>
           <tr>
             <th>KEY</th>
@@ -25,5 +25,5 @@ export default function AccountData({ storage }) {
         </tbody>
       </table>
     </>
-  )
+  );
 }
