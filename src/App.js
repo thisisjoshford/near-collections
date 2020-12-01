@@ -8,7 +8,7 @@ import AccountData from './components/AccountData';
 import nearLogo from './assets/logo-white.svg';
 import './global.css';
 
-const { networkId } = getConfig(process.env.NODE_ENV || 'development');
+const { networkId } = getConfig(process.env.NEAR_ENV || 'development');
 
 export default function App() {
   const [data, setData] = useState();
