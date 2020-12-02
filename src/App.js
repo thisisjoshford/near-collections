@@ -1,31 +1,31 @@
-import 'regenerator-runtime/runtime'
-import React, { useState, useEffect } from 'react'
-import { logout, onSubmit } from './services/utils'
-import getConfig from './config'
-import { fetchStorage } from './services/api'
-import WelcomeScreen from './components/WelcomeScreen'
-import AccountData from './components/AccountData'
-import nearLogo from './assets/logo-white.svg'
-import './global.css'
+import 'regenerator-runtime/runtime';
+import React, { useState, useEffect } from 'react';
+import { logout, onSubmit } from './services/utils';
+import getConfig from './config';
+import { fetchStorage } from './services/api';
+import WelcomeScreen from './components/WelcomeScreen';
+import AccountData from './components/AccountData';
+import nearLogo from './assets/logo-white.svg';
+import './global.css';
 
-const { networkId } = getConfig(process.env.NODE_ENV || 'development')
+const { networkId } = getConfig(process.env.NEAR_ENV || 'development');
 
 export default function App() {
-  const [data, setData] = useState()
-  const [storage, setStorage] = useState()
-  const [buttonDisabled, setButtonDisabled] = useState(true)
-  const [showNotification, setShowNotification] = useState(false)
+  const [data, setData] = useState();
+  const [storage, setStorage] = useState();
+  const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [showNotification, setShowNotification] = useState(false);
 
   useEffect(
     () => {
       fetchStorage(process.env.CONTRACT_NAME, 'testnet')
         .then(res => {
-          setStorage(res)
-          console.log(res)
-        })
-    },[showNotification])
+          setStorage(res);
+          console.log(res);
+        });
+    }, [showNotification]);
 
-  if (!window.walletConnection.isSignedIn()) return <WelcomeScreen/>
+  if (!window.walletConnection.isSignedIn()) return <WelcomeScreen/>;
 
   return (
     <>
@@ -38,8 +38,8 @@ export default function App() {
         Sign out
       </button>
       <main>
-       <img id="nearLogo" src={nearLogo}/>
-       <p id ="accountInfo"> Enter data to be stored in account:{' '}<br/>
+        <img id="nearLogo" src={nearLogo}/>
+        <p id ="accountInfo"> Enter data to be stored in account:{' '}<br/>
           <a 
             href={`https://explorer.testnet.near.org/accounts/${process.env.CONTRACT_NAME}`}
             target="_blank"
@@ -49,14 +49,14 @@ export default function App() {
           </a>
         </p>
         <form onSubmit={async event => {
-          const newKey = event.target.elements.key.value
-          const newValue = event.target.elements.value.value
-          await onSubmit(event)
-          setData(newKey, newValue)
-          setShowNotification(true)
+          const newKey = event.target.elements.key.value;
+          const newValue = event.target.elements.value.value;
+          await onSubmit(event);
+          setData(newKey, newValue);
+          setShowNotification(true);
           setTimeout(() => {
-            setShowNotification(false)
-          }, 11000)
+            setShowNotification(false);
+          }, 11000);
         }}>
           <fieldset id="fieldset">
           
@@ -88,12 +88,12 @@ export default function App() {
       </main>
       {showNotification && <Notification />}
     </>
-  )
+  );
 }
 
 // this component gets rendered by App after the form is submitted
 function Notification() {
-  const urlPrefix = `https://explorer.${networkId}.near.org/accounts`
+  const urlPrefix = `https://explorer.${networkId}.near.org/accounts`;
   return (
     <aside>
       <a target="_blank" rel="noreferrer" href={`${urlPrefix}/${window.accountId}`}>
@@ -110,5 +110,5 @@ function Notification() {
         <div>Just now</div>
       </footer>
     </aside>
-  )
+  );
 }
